@@ -34,7 +34,7 @@ function newTable() {
     };
   };
 
-  const cancelClick = () => history.goBack();
+  const cancelOption = () => history.goBack();
 
   return (
     <div>
@@ -44,7 +44,7 @@ function newTable() {
         submitHandle={submitHandler}
         changeHandle={changeHandler}
         form={formData}
-        cancelClick={cancelClick}
+        cancelOption={cancelOption}
       />
     </div>
   );

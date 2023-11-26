@@ -11,7 +11,7 @@ function createReserved() {
     mobile_number: "",
     reservation_date: "",
     reservation_time: "",
-    party_size: "",
+    people: "",
   });
   const [err, serErr] = useState(false);
   const history = useHistory();
@@ -24,7 +24,7 @@ function createReserved() {
     event.preventDefault();
     setErr(false);
     const abortController = new AbortController();
-    formData.party_size = Number(formData.party_size);
+    formData.people = Number(formData.people);
     try {
       const response = await createReserved(formData, abortController.signal);
       history.push(`/dashboard?date=${response.reservation_date}`);
@@ -38,7 +38,7 @@ function createReserved() {
     };
   };
 
-  const cancelClick = () => history.push(`/dashboard`);
+  const cancelOption = () => history.push(`/dashboard`);
 
   return (
     <div>
@@ -48,8 +48,10 @@ function createReserved() {
         changeHandler={changeHandler}
         submitHandler={submitHandler}
         form={formData}
-        cancelClick={cancelClick}
+        cancelOption={cancelOption}
       />
     </div>
   );
 }
+
+export default createReservation;

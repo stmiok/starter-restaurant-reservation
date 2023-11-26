@@ -8,7 +8,9 @@ function cancelReserved({ reservation_id }) {
   const handleClick = async (event) => {
     event.preventDefault();
     setErr(false);
+
     const abortController = new AbortController();
+
     if (
       window.confirm(
         "Do you wish to cancel this reservation? This cannot be undone."

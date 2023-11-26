@@ -1,6 +1,6 @@
 import React from "react";
 
-function tableForm({ submitHandler, changeHandler, form, cancelClick }) {
+function tableForm({ submitHandler, changeHandler, form, cancelOption }) {
   return (
     <form onSubmit={submitHandler}>
       <div>
@@ -36,7 +36,7 @@ function tableForm({ submitHandler, changeHandler, form, cancelClick }) {
           required
         />
       </div>
-      <button onClick={cancelClick} className="btn btn-secondary">
+      <button onClick={cancelOption} className="btn btn-secondary">
         Cancel
       </button>
       <button type="submit" className="btn btn-primary m-3">
