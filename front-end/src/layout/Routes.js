@@ -24,6 +24,21 @@ function Routes() {
       <Route path="/dashboard">
         <Dashboard date={today()} />
       </Route>
+      <Route exact={true} path="/reservations/new">
+        <CreateReservation />
+      </Route>
+      <Route exact={true} path="/reservations/:reservation_id/seat">
+        <SeatReservation />
+      </Route>
+      <Route exact={true} path="/reservations/:reservation_id/edit">
+        <EditReservation />
+      </Route>
+      <Route exact={true} path="/tables/new">
+        <CreateTable />
+      </Route>
+      <Route exact={true} path="/search">
+        <SearchReservations />
+      </Route>
       <Route>
         <NotFound />
       </Route>
