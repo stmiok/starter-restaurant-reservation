@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { cancelReservation } from "../utils/api";
 
 function CancelReservation({ reservation_id, loadDashboard }) {
@@ -24,6 +24,6 @@ function CancelReservation({ reservation_id, loadDashboard }) {
       Cancel
     </button>
   );
-}
+};
 
 export default CancelReservation;
