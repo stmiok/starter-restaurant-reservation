@@ -1,49 +1,82 @@
-import React from "react";
+import React, { useState } from "react";
 
-function tableForm({ submitHandler, changeHandler, form, cancelOption }) {
+function TableForm({
+  onCancel,
+  submitHandler,
+  submitLabel,
+  cancelLabel,
+  initialState,
+  error,
+}) {
+  const [tableData, setTableData] = useState({ ...initialState });
+
+  const handleTableUpdate = (event) => {
+    if (event.target.name === "capacity") {
+      setTableData({
+        ...tableData,
+        [event.target.name]: Number(event.target.value),
+      });
+    } else {
+      setTableData({
+        ...tableData,
+        [event.target.name]: event.target.value,
+      });
+    }
+  };
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    submitHandler(tableData);
+    if (!error) {
+      setTableData({ ...initialState });
+    }
+  };
+
   return (
-    <form onSubmit={submitHandler}>
-      <div>
-        <label htmlFor="table_name" class="form-label">
-          Table Name
+    <form onSubmit={onSubmit}>
+      <div className="form-group">
+        <label htmlFor="table_name">
+          Table Name:
+          <input
+            className="form-control"
+            name="table_name"
+            id="table_name"
+            type="text"
+            required={true}
+            value={tableData.table_name}
+            placeholder="Table Name"
+            onChange={handleTableUpdate}
+          />
         </label>
         <br />
-        <input
-          id="table_name"
-          class="form-control"
-          type="text"
-          placeholder="Table Name"
-          name="table_name"
-          onChange={changeHandler}
-          value={form.table_name}
-          required
-        />
+        <label htmlFor="capacity">
+          Capacity:
+          <input
+            className="form-control"
+            name="capacity"
+            id="capacity"
+            type="number"
+            required={true}
+            value={tableData.capacity}
+            placeholder="Capacity"
+            onChange={handleTableUpdate}
+          />
+        </label>
       </div>
       <div>
-        <label htmlFor="capacity" class="form-label">
-          Table Capacity
-        </label>
-        <br />
-        <input
-          id="capacity"
-          class="form-control"
-          type="number"
-          min={1}
-          placeholder={1}
-          name="capacity"
-          onChange={changeHandler}
-          value={form.capacity}
-          required
-        />
+        <button
+          type="button"
+          className="btn btn-secondary mr-2"
+          onClick={onCancel}
+        >
+          {cancelLabel}
+        </button>
+        <button type="submit" className="btn btn-primary">
+          {submitLabel}
+        </button>
       </div>
-      <button onClick={cancelOption} className="btn btn-secondary">
-        Cancel
-      </button>
-      <button type="submit" className="btn btn-primary m-3">
-        Submit
-      </button>
     </form>
   );
 }
 
-export default tableForm;
+export default TableForm;
