@@ -1,7 +1,7 @@
 import React from "react";
 import { cancelReservation } from "../utils/api";
 
-function CancelReservation({ reservation_id, loadDashboard }) {
+function CancelReservation({ reservation_id, loadDahsboard }) {
   const abortController = new AbortController();
   const handleCancel = async () => {
     const confirm = window.confirm(
@@ -24,6 +24,6 @@ function CancelReservation({ reservation_id, loadDashboard }) {
       Cancel
     </button>
   );
-};
+}
 
 export default CancelReservation;
