@@ -6,10 +6,9 @@ import { today } from "../utils/date-time";
 import CreateTable from "../tables/CreateTable";
 import CreateReservation from "../reservations/CreateReservation";
 import EditReservation from "../reservations/EditReservation";
-import TableSelect from "../tables/TableSelect"
-import SearchReservations from "../reservations/SearchReservations";
+import TableSelect from "../tables/TableSelect";
+import SearchReservation from "../reservations/SearchReservation";
 import useQuery from "../utils/useQuery";
-
 
 /**
  * Defines all the routes for the application.
@@ -19,13 +18,9 @@ import useQuery from "../utils/useQuery";
  * @returns {JSX.Element}
  */
 
-
-
-
-
 function Routes() {
-  const query = useQuery()
-  const date = query.get("date")
+  const query = useQuery();
+  const date = query.get("date");
 
   return (
     <Switch>
@@ -51,7 +46,7 @@ function Routes() {
         <CreateTable />
       </Route>
       <Route exact={true} path="/search">
-        <SearchReservations />
+        <SearchReservation />
       </Route>
       <Route>
         <NotFound />
