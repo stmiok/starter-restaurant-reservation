@@ -72,6 +72,7 @@ export async function createReservation(reservation, signal) {
   const url = `${API_BASE_URL}/reservations`;
   const options = {
     method: "POST",
+    mode: "cors",
     headers,
     body: JSON.stringify({ data: reservation }),
     signal,
@@ -88,9 +89,7 @@ export async function readReservation(reservation_id, signal) {
 }
 
 export async function editReservation(updatedReservation, signal) {
-  const url = new URL(
-    `${API_BASE_URL}/reservations/${updatedReservation.reservation_id}`
-  );
+  const url = `${API_BASE_URL}/reservations/${updatedReservation.reservation_id}`;
   const options = {
     method: "PUT",
     headers,
@@ -102,10 +101,11 @@ export async function editReservation(updatedReservation, signal) {
   return await fetchJson(url, options);
 }
 
-export async function cancelReservation(reservation, signal) {
-  const url = new URL(`${API_BASE_URL}/reservations/${reservation}/status`);
+export async function cancelReservation(reservation_id, signal) {
+  const url = `${API_BASE_URL}/reservations/${reservation_id}/status`;
   const options = {
     method: "PUT",
+    mode: "cors",
     headers,
     body: JSON.stringify({
       data: {
@@ -121,6 +121,7 @@ export async function createTable(table, signal) {
   const url = `${API_BASE_URL}/tables`;
   const options = {
     method: "POST",
+    mode: "cors",
     headers,
     body: JSON.stringify({ data: table }),
     signal,
@@ -134,9 +135,10 @@ export async function listTable(signal) {
 }
 
 export async function seatTable(reservation_id, table_id, signal) {
-  const url = new URL(`${API_BASE_URL}/tables/${table_id}/seat`);
+  const url = `${API_BASE_URL}/tables/${table_id}/seat`;
   const options = {
     method: "PUT",
+    mode: "cors",
     headers,
     body: JSON.stringify({ data: { reservation_id } }),
     signal,
@@ -151,9 +153,7 @@ export async function finishReservation(table_id, signal) {
 }
 
 export async function searchByNumber(mobile_number, signal) {
-  const url = new URL(
-    `${API_BASE_URL}/reservations?mobile_number=${mobile_number}`
-  );
+  const url = `${API_BASE_URL}/reservations?mobile_number=${mobile_number}`;
   return await fetchJson(url, { signal })
     .then(formatReservationDate)
     .then(formatReservationTime);

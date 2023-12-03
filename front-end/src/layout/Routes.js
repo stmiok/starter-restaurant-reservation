@@ -3,11 +3,13 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import Dashboard from "../dashboard/Dashboard";
 import NotFound from "./NotFound";
 import { today } from "../utils/date-time";
-import newTable from "../tables/newTable";
-import createReserved from "../reservations/createReserved";
-import editReservation from "../reservations/editReservation";
-import seatReservation from "../reservations/seatReservation";
-import searchReservations from "../reservations/searchReservations";
+import CreateTable from "../tables/CreateTable";
+import CreateReservation from "../reservations/CreateReservation";
+import EditReservation from "../reservations/EditReservation";
+import SeatReservation from "../reservations/SeatReservation";
+import SearchReservations from "../reservations/SearchReservations";
+import useQuery from "../utils/useQuery";
+import CreateReservation from "../reservations/CreateReservation";
 
 /**
  * Defines all the routes for the application.
@@ -16,6 +18,12 @@ import searchReservations from "../reservations/searchReservations";
  *
  * @returns {JSX.Element}
  */
+
+function Routes() {
+  const query = useQuery()
+  const date = query.get("date")
+}
+
 function Routes() {
   return (
     <Switch>
@@ -26,22 +34,22 @@ function Routes() {
         <Redirect to={"/dashboard"} />
       </Route>
       <Route path="/dashboard">
-        <Dashboard date={today()} />
+        <Dashboard date={date ? date : today()} />
       </Route>
       <Route exact={true} path="/reservations/new">
-        <createReserved />
+        <CreateReservation />
       </Route>
       <Route exact={true} path="/reservations/:reservation_id/seat">
-        <seatReservation />
+        <SeatReservation />
       </Route>
       <Route exact={true} path="/reservations/:reservation_id/edit">
-        <editReservation />
+        <EditReservation />
       </Route>
       <Route exact={true} path="/tables/new">
-        <newTable />
+        <CreateTable />
       </Route>
       <Route exact={true} path="/search">
-        <searchReservations />
+        <SearchReservations />
       </Route>
       <Route>
         <NotFound />
