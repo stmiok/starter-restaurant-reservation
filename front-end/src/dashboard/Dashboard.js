@@ -3,8 +3,8 @@ import { finishReservation, listReservations, listTable } from "../utils/api";
 import { next, previous, today } from "../utils/date-time";
 import { useHistory } from "react-router-dom";
 import ErrorAlert from "../layout/ErrorAlert";
-import ReservationList from "../Reservations/ReservationList";
-import TableList from "../Tables/TableList";
+import ReservationList from "../reservations/ReservationList";
+import TableList from "../tables/TableList";
 
 /**
  * Defines the dashboard page.
