@@ -2,7 +2,7 @@ import React from "react";
 import CancelReservation from "./CancelReservation";
 
 function ReservationList({ reservations, loadDashboard }) {
-  const reservationsMap = reservations.map((reservation, index) => (
+  const reservationsMap = reservations.map((reservation) => (
     <tr key={reservation.reservation_id}>
       <td>{reservation.first_name}</td>
       <td>{reservation.last_name}</td>

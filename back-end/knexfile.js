@@ -8,8 +8,8 @@ require('dotenv').config();
 const path = require("path");
 
 const {
-  DATABASE_URL = "postgres://haidtibu:WloIiSNlrgqW2j30LR5SQDT7BxtgNGxW@bubble.db.elephantsql.com/haidtibu",
-  DATABASE_URL_DEVELOPMENT = "postgres://haidtibu:WloIiSNlrgqW2j30LR5SQDT7BxtgNGxW@bubble.db.elephantsql.com/haidtibu",
+  DATABASE_URL = "postgres://fjjqxodc:0WBM40zIGZma-13NabXXN0gqU2-c4282@bubble.db.elephantsql.com/fjjqxodc",
+  DATABASE_URL_DEVELOPMENT = "postgres://fjjqxodc:0WBM40zIGZma-13NabXXN0gqU2-c4282@bubble.db.elephantsql.com/fjjqxodc",
   DATABASE_URL_TEST = "postgresql://postgres@localhost/postgres",
   DATABASE_URL_PREVIEW = "postgresql://postgres@localhost/postgres",
   DEBUG,
@@ -18,7 +18,7 @@ const {
 module.exports = {
   development: {
     client: "postgresql",
-    pool: { min: 1, max: 5 },
+    pool: { min: 1, max: 1 },
     connection: DATABASE_URL_DEVELOPMENT,
     migrations: {
       directory: path.join(__dirname, "src", "db", "migrations"),
@@ -30,7 +30,7 @@ module.exports = {
   },
   test: {
     client: "postgresql",
-    pool: { min: 1, max: 5 },
+    pool: { min: 1, max: 1 },
     connection: DATABASE_URL_TEST,
     migrations: {
       directory: path.join(__dirname, "src", "db", "migrations"),

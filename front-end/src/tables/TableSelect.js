@@ -28,7 +28,7 @@ function TableSelect() {
     setTableId(target.value);
   };
 
-  const submitHandler = async () => {
+  const handleSubmit = async () => {
     const abortController = new AbortController();
     try {
       await seatTable(reservation_id, tableId);
@@ -39,7 +39,7 @@ function TableSelect() {
     return () => abortController;
   };
 
-  const tableOptions = tables.map((table, index) => {
+  const tableOptions = tables.map((table) => {
     return (
       <option key={table.table_id} value={table.table_id}>
         {table.table_name} - {table.capacity}
@@ -75,7 +75,7 @@ function TableSelect() {
         <button
           type="submit"
           className="btn btn-outline-primary btn-sm"
-          onClick={submitHandler}
+          onClick=  {handleSubmit}
         >
           Submit
         </button>

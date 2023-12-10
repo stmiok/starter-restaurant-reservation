@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 function TableForm({
   onCancel,
-  submitHandler,
+  handleSubmit,
   submitLabel,
   cancelLabel,
   initialState,
@@ -26,7 +26,7 @@ function TableForm({
 
   const onSubmit = (event) => {
     event.preventDefault();
-    submitHandler(tableData);
+    handleSubmit(tableData);
     if (!error) {
       setTableData({ ...initialState });
     }
