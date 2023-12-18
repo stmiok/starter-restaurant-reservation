@@ -150,7 +150,7 @@ function validateTimeIsTime(req, res, next) {
   } else {
     return next({
       status: 400,
-      message: `Reservation ttime must be a time.`,
+      message: `Reservation time must be a time.`,
     });
   }
 }

@@ -120,7 +120,7 @@ function validateCapacityIsANumber(req, res, next) {
   } else {
     return next({
       status: 400,
-      message: `capacity must be a number`,
+      message: `Capacity must be a number`,
     });
   }
 }
@@ -132,7 +132,7 @@ function valiteTableNameIsNotOneCharacter(req, res, next) {
   if (table.length < 2) {
     return next({
       status: 400,
-      message: `table_name must be longer than one character`,
+      message: `Table Name must be longer than one character`,
     });
   }
   return next();
@@ -144,7 +144,7 @@ async function validateReservationIdExists(req, res, next) {
   if (!reservation_id) {
     next({
       status: 400,
-      message: `reservation_id is missing.`,
+      message: `Reservation id is missing.`,
     });
   }
   const reservation = await reservationsService.read(reservation_id);
@@ -154,7 +154,7 @@ async function validateReservationIdExists(req, res, next) {
   }
   next({
     status: 404,
-    message: `reservation_id ${reservation_id} cannot be found.`,
+    message: `Reservation id ${reservation_id} cannot be found.`,
   });
 }
 
@@ -164,7 +164,7 @@ function validateTableCapacity(req, res, next) {
   if (capacity < res.locals.reservation.people) {
     next({
       status: 400,
-      message: `table does not have sufficient capacity.`,
+      message: `Table does not have sufficient capacity.`,
     });
   }
   next();
@@ -176,7 +176,7 @@ function validateTableAvailability(req, res, next) {
   if (reservation !== null) {
     next({
       status: 400,
-      message: `table ${res.locals.table.table_id} is occupied.`,
+      message: `Table ${res.locals.table.table_id} is occupied.`,
     });
   }
   next();
