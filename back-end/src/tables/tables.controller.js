@@ -120,7 +120,7 @@ function validateCapacityIsANumber(req, res, next) {
   } else {
     return next({
       status: 400,
-      message: `Capacity must be a number`,
+      message: `capacity must be a number`,
     });
   }
 }
@@ -132,7 +132,7 @@ function valiteTableNameIsNotOneCharacter(req, res, next) {
   if (table.length < 2) {
     return next({
       status: 400,
-      message: `Table Name must be longer than one character`,
+      message: `table_name must be longer than one character`,
     });
   }
   return next();
@@ -144,7 +144,7 @@ async function validateReservationIdExists(req, res, next) {
   if (!reservation_id) {
     next({
       status: 400,
-      message: `Reservation id is missing.`,
+      message: `reservation_id is missing.`,
     });
   }
   const reservation = await reservationsService.read(reservation_id);

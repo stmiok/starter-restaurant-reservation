@@ -104,7 +104,7 @@ function validatePeopleIsANumber(req, res, next) {
   } else {
     return next({
       status: 400,
-      message: `People must be a number.`,
+      message: `people must be a number.`,
     });
   }
 }
@@ -125,7 +125,7 @@ function validateDateIsDate(req, res, next) {
   } else {
     return next({
       status: 400,
-      message: `Reservation date must be a date.`,
+      message: `reservation_date must be a date.`,
     });
   }
 }
@@ -138,19 +138,19 @@ function validateTimeIsTime(req, res, next) {
   if (reservation_time < "10:30") {
     return next({
       status: 400,
-      message: `Reservation time must be after 10:30 am.`,
+      message: `reservation_time must be after 10:30 am.`,
     });
   } else if (reservation_time > "21:30") {
     return next({
       status: 400,
-      message: `Reservation time must be before 9:30 pm.`,
+      message: `reservation_time must be before 9:30 pm.`,
     });
   } else if (timeRegex.test(reservation_time) == true) {
     return next();
   } else {
     return next({
       status: 400,
-      message: `Reservation time must be a time.`,
+      message: `reservation_time must be a time.`,
     });
   }
 }

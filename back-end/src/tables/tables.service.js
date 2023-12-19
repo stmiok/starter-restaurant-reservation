@@ -22,8 +22,7 @@ function update(updatedTable) {
     .then((updatedRecords) => updatedRecords[0]);
 }
 
-
-function destroy(table_id, reservation_id) {
+function finish(table_id, reservation_id) {
   return knex.transaction(function (trx) {
     return trx("tables")
       .where({ table_id: table_id })
@@ -41,5 +40,5 @@ module.exports = {
   create,
   read,
   update,
-  destroy,
+  finish,
 };
