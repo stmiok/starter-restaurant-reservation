@@ -24,10 +24,14 @@
         "web-vitals": "^0.2.4"
     },
     "scripts": {
-       "build": "npm -prefix front-end run build",
-        "eject": "react-scripts eject",
-        "start": "react-scripts start",
-        "test": "npx cross-env CI=true npm run test:run",
+        "build": "npm -prefix front-end run build",
+        "preinstall": "cd ./back-end && npm install",
+        "install": "cd ./front-end && npm install",
+        "start": "npx concurrently 'npm run start:backend' 'npm run start:frontend'",
+        "start:backend": "npm --prefix ./back-end start",
+        "start:frontend": "npm --prefix ./front-end start",
+        "start:dev": "npx concurrently \"npm run start:dev --prefix ./back-end\" \"npm start --prefix ./front-end\" ",
+        "test": "npx cross-env CI=true npm run test:
         "test:run": "run-s test:unit test:e2e",
         "test:1": "run-p -l -r test:start:* \"test:e2e:run -- us-01\"",
         "test:2": "run-p -l -r test:start:* \"test:e2e:run -- us-02\"",
